@@ -1,0 +1,13 @@
+name: appdir
+title: appdir
+username:
+account: larserikgangsei
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 8823617
+bundleId: 7291647
+url: https://larserikgangsei.shinyapps.io/appdir/
+when: 1685623470.96842
+lastSyncTime: 1685623470.96843
+asMultiple: FALSE
+asStatic: FALSE
