@@ -55,14 +55,8 @@ if (length(setdiff(packages, rownames(installed.packages()))) > 0) {
 
 for(pp in packages){library(pp,character.only=TRUE)}
 
-# Load the CrossbreedPrediction pacgage from Github
-# As long as package is private, special token
-if(!is.element('CrossBreedPrediction',rownames(installed.packages())))
-{
-devtools::install_github("LarsErikGangsei/CrossBreedPredictionPublic")
-}
-library('CrossBreedPrediction')
-
+# Load functions from CrossbreedPredictionPublic
+devtools::load_all()
 
 
 ## 2) Figure with comparison of PLS and PCA analysis ------------------------ ##
@@ -99,14 +93,14 @@ colnames(Test_ResultsSim$`TrainP-`$PLSQDA) <- strrep(colnames(Test_ResultsSim$`T
 TrueBreeds <- substr(rownames(Test_ResultsSim$`TrainP+`),1,4)
 nn_test <- length(TrueBreeds)
 
-Distributionplot_func(image_path = 'Figures/Fig_PLS_vsSim_Real.png',
+Distributionplot_func(image_path = 'Fig_PLS_vsSim_Real.png',
                       TrueBreed = TrueBreeds,
                       BreedNames = list(
                         `All others` = c("DDDD","LLLL","PPPP","WWWW"),
                         Hampshire = "HHHH"),
                       SoftPreds = Test_ResultsSim$`TrainP+`[c("RF","Admixture","PLSR","PLSQDA")],
                       MethodNames = c("Random Forest","Admixture","PLSR","PLS-QDA"),
-                      dens_adj = c(1,1,1,500))
+                      dens_adj = c(2,1,1,500))
 
 ## 5) Table with results for test sets -------------------------------------- ##
 Res_tab <- dplyr::bind_rows(
